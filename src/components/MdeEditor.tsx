@@ -51,6 +51,7 @@ export class MdeEditor extends React.Component<MdeEditorProps, {}> {
         return (
             <div className={`mde-text ${className || ""}`}>
                 <Editor
+                    spellCheck={true}
                     ref={(editor) => this.editorRef = editor}
                     stripPastedStyles={true}
                     editorState={draftEditorState}
