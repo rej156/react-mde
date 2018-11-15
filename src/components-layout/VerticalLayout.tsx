@@ -38,7 +38,6 @@ export class VerticalLayout extends React.Component<LayoutProps, {}> {
 
         return (
             <div className="react-mde-vertical-layout">
-                <div style={{ margin: "200px 10px"}}>Test</div>
                 <MdeToolbar
                     commands={commands}
                     onCommand={this.handleCommand}
