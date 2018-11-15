@@ -47,6 +47,13 @@ export class MdeToolbar extends React.Component<MdeToolbarProps, MdeToolbarState
         }
     }
 
+    componentWillUnmount() {
+        if (this.props.sticky) {
+            window.removeEventListener("scroll", this.handleOnScroll);
+            window.removeEventListener("touchend", this.handleOnScroll);
+        }
+    }
+
     render() {
         const {children, commands, onCommand, readOnly } = this.props;
 
