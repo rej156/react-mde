@@ -33,15 +33,17 @@ export class VerticalLayout extends React.Component<LayoutProps, {}> {
      * @memberOf ReactMde
      */
     render() {
-        const {commands, mdeEditorState, layoutOptions, emptyPreviewHtml, readOnly} = this.props;
+        const {commands, mdeEditorState, layoutOptions, emptyPreviewHtml, readOnly, stickyToolbar} = this.props;
         const finalLayoutOptions = layoutOptions ? {...layoutOptions} : {};
 
         return (
             <div className="react-mde-vertical-layout">
+                <div style={{ margin: "200px 10px"}}>Test</div>
                 <MdeToolbar
                     commands={commands}
                     onCommand={this.handleCommand}
                     readOnly={readOnly}
+                    sticky={stickyToolbar}
                 />
                 <div className="react-mde-content">
                     <MdeEditor

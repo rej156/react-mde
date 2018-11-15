@@ -35,7 +35,7 @@ export class TabbedLayout extends React.Component<LayoutProps, {}> {
      */
     render() {
 
-        const { commands, mdeEditorState, emptyPreviewHtml, readOnly } = this.props;
+        const { commands, mdeEditorState, emptyPreviewHtml, readOnly, stickyToolbar } = this.props;
 
         let styleTabCode = "mde-tab";
         let styleTabPreview = "mde-tab";
@@ -50,6 +50,7 @@ export class TabbedLayout extends React.Component<LayoutProps, {}> {
                     commands={commands}
                     onCommand={this.handleCommand}
                     readOnly={readOnly}
+                    sticky={stickyToolbar}
                 >
                     <div className="mde-tabs">
                         <button

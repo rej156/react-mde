@@ -1,5 +1,17 @@
 @import "variables.scss";
 
+.sticky-toolbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99999;
+
+  .mde-toolbar-children {
+    position: fixed;
+    top: 0;
+  }
+}
+
 .mde-header {
   flex-shrink: 0;
   display: flex;

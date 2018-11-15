@@ -33,7 +33,7 @@ export class HorizontalLayout extends React.Component<LayoutProps, {}> {
      * @memberOf ReactMde
      */
     render() {
-        const {commands, mdeEditorState, layoutOptions, emptyPreviewHtml, readOnly} = this.props;
+        const {commands, mdeEditorState, layoutOptions, emptyPreviewHtml, readOnly, stickyToolbar} = this.props;
         const finalLayoutOptions = layoutOptions ? {...layoutOptions} : {};
 
         return (
@@ -42,6 +42,7 @@ export class HorizontalLayout extends React.Component<LayoutProps, {}> {
                     commands={commands}
                     onCommand={this.handleCommand}
                     readOnly={readOnly}
+                    sticky={stickyToolbar}
                 />
                 <div className="mde-content">
                     <MdeEditor
