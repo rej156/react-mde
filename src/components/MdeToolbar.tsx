@@ -51,19 +51,15 @@ export class MdeToolbar extends React.Component<
       this.state.scrolled === false &&
       this.props.stickyToolbar
     ) {
-      this.setState({ scrolled: true }, () => {
-        const containerDOMNode = document.querySelector(".container");
-        if (containerDOMNode) {
-          const stickyToolbarDOMNode = document.querySelector(
-            ".sticky-toolbar",
-          );
-          if (stickyToolbarDOMNode) {
-            (stickyToolbarDOMNode as HTMLElement).style.width = String(
-              containerDOMNode.clientWidth,
-            );
-          }
+      this.setState({ scrolled: true });
+      const containerDOMNode = document.querySelector(".container");
+      if (containerDOMNode) {
+        const stickyToolbarDOMNode = document.querySelector(".sticky-toolbar");
+        if (stickyToolbarDOMNode) {
+          (stickyToolbarDOMNode as HTMLElement).style.width =
+            String(containerDOMNode.clientWidth) + "px";
         }
-      });
+      }
     } else if (
       scrollTop < this.state.scrollHeight &&
       this.state.scrolled === true
