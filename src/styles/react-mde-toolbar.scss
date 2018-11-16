@@ -163,13 +163,10 @@
     }
 }
 
-.sticky-toolbar {
+.mde-header.sticky-toolbar {
     position: fixed;
     top: 0;
-    width: 100%;
     z-index: 99999;
-    .mde-toolbar-children {
-        position: fixed;
-        top: 0;
-    }
+    background: #f7f7f7 !important;
+    border-bottom: lightgray !important;
 }
