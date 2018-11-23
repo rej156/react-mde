@@ -13,7 +13,7 @@ export const linkCommand: Command = {
         const {text, selection} = getMarkdownStateFromDraftState(state);
         const newSelection = selectWordIfCaretIsInsideOne({text, selection});
         const {newText, insertionLength} = insertText(text, "[", newSelection.start);
-        const finalText = insertText(newText, "](url)", newSelection.end + insertionLength).newText;
+        const finalText = insertText(newText, `](${newText})`, newSelection.end + insertionLength).newText;
 
         return buildNewDraftState(
             state,
