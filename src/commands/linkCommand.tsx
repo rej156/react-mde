@@ -20,10 +20,11 @@ export const linkCommand: Command = {
       "[",
       newSelection.start,
     );
+    const misalignedSelectionIndex = newSelection.start + insertionLength;
     const finalText = insertText(
       newText,
       `](${text.slice(
-        newSelection.start + insertionLength,
+        misalignedSelectionIndex - 1,
         newSelection.end + insertionLength,
       ) || "INSERT LINK PLACEHOLDER HERE"})`,
       newSelection.end + insertionLength,
