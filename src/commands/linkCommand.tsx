@@ -22,7 +22,7 @@ export const linkCommand: Command = {
     );
     const finalText = insertText(
       newText,
-      `](${newSelection})`,
+      `](${text.slice(selection.start, selection.end)})`,
       newSelection.end + insertionLength,
     ).newText;
 
