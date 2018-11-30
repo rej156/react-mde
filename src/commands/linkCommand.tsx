@@ -1,29 +1,37 @@
 import * as React from "react";
-import {Command} from "../types";
-import {insertText, selectWordIfCaretIsInsideOne} from "../util/MarkdownUtil";
-import {buildNewDraftState, getMarkdownStateFromDraftState} from "../util/DraftUtil";
-import {MdeToolbarIcon} from "../components";
+import { Command } from "../types";
+import { insertText, selectWordIfCaretIsInsideOne } from "../util/MarkdownUtil";
+import {
+  buildNewDraftState,
+  getMarkdownStateFromDraftState,
+} from "../util/DraftUtil";
+import { MdeToolbarIcon } from "../components";
 
 export const linkCommand: Command = {
-    buttonContent: <MdeToolbarIcon icon="link"/>,
+  buttonContent: <MdeToolbarIcon icon="link" />,
 
-    buttonProps: { "aria-label": "Insert a link" },
+  buttonProps: { "aria-label": "Insert a link" },
 
-    execute: (state) => {
-        const {text, selection} = getMarkdownStateFromDraftState(state);
-        const newSelection = selectWordIfCaretIsInsideOne({text, selection});
-        const {newText, insertionLength} = insertText(text, "[", newSelection.start);
-        const finalText = insertText(newText, `](${newText})`, newSelection.end + insertionLength).newText;
+  execute: (state) => {
+    const { text, selection } = getMarkdownStateFromDraftState(state);
+    const newSelection = selectWordIfCaretIsInsideOne({ text, selection });
+    const { newText, insertionLength } = insertText(
+      text,
+      "[",
+      newSelection.start,
+    );
+    const finalText = insertText(
+      newText,
+      `](${newSelection})`,
+      newSelection.end + insertionLength,
+    ).newText;
 
-        return buildNewDraftState(
-            state,
-            {
-                text: finalText,
-                selection: {
-                    start: newSelection.start + insertionLength,
-                    end: newSelection.end + insertionLength,
-                },
-            },
-        );
-    },
+    return buildNewDraftState(state, {
+      text: finalText,
+      selection: {
+        start: newSelection.start + insertionLength,
+        end: newSelection.end + insertionLength,
+      },
+    });
+  },
 };
