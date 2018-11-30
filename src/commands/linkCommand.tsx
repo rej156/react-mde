@@ -21,12 +21,18 @@ export const linkCommand: Command = {
       newSelection.start,
     );
     const misalignedSelectionIndex = newSelection.start + insertionLength;
+    let originalSelectedText: string = text.slice(
+      misalignedSelectionIndex - 1,
+      newSelection.end + insertionLength,
+    );
+
+    originalSelectedText =
+      originalSelectedText.slice(-1) === " "
+        ? originalSelectedText.slice(0, -1)
+        : originalSelectedText;
     const finalText = insertText(
       newText,
-      `](${text.slice(
-        misalignedSelectionIndex - 1,
-        newSelection.end + insertionLength,
-      ) || "INSERT LINK PLACEHOLDER HERE"})`,
+      `](${originalSelectedText || "INSERT LINK PLACEHOLDER HERE"})`,
       newSelection.end + insertionLength,
     ).newText;
 
