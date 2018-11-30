@@ -22,7 +22,8 @@ export const linkCommand: Command = {
     );
     const finalText = insertText(
       newText,
-      `](${text.slice(selection.start, selection.end)})`,
+      `](${text.slice(selection.start, selection.end) ||
+        "INSERT LINK PLACEHOLDER HERE"})`,
       newSelection.end + insertionLength,
     ).newText;
 
